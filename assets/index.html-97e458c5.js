@@ -1,0 +1,33 @@
+import{_ as n,o as s,c as t,a}from"./app-85654d57.js";const e={},p=a(`<h1 id="开始" tabindex="-1"><a class="header-anchor" href="#开始" aria-hidden="true">#</a> 开始</h1><p>前端项目结构</p><div class="language-javascript line-numbers-mode" data-ext="js"><pre class="language-javascript"><code><span class="token operator">-</span> <span class="token keyword">public</span>
+<span class="token operator">-</span> src
+    <span class="token operator">...</span>
+    <span class="token operator">-</span> components <span class="token comment">//组件目录</span>
+        <span class="token operator">...</span>
+        <span class="token operator">-</span> color<span class="token punctuation">.</span>js              <span class="token comment">//主题相关配置</span>
+        <span class="token operator">-</span> options<span class="token punctuation">.</span>js            <span class="token comment">//组件基础、属性、数据信息</span>
+        <span class="token operator">-</span> register<span class="token operator">-</span>cpt<span class="token punctuation">.</span>js       <span class="token comment">//组件注册器</span>
+        <span class="token operator">-</span> register<span class="token operator">-</span>option<span class="token punctuation">.</span>js    <span class="token comment">//组件配置表单注册器</span>
+<span class="token operator">...</span>
+env<span class="token punctuation">.</span>js                          <span class="token comment">//软件名称、版本号、API请求前缀配置</span>
+vue<span class="token punctuation">.</span>config<span class="token punctuation">.</span>js
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul><li>options.js 中保存所有组件的默认配置项，如文本组件的文字颜色、字体大小等等。</li><li>register-cpt.js 为组件注册器，此文件的自定义组件将注册为全局组件。</li><li>register-option.js 为组件配置表单注册器，此文件的自定义配置表单组件将注册为全局组件。</li></ul><p>自定义组件创建流程：</p><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>在components创建文件夹---&gt;创建组件---&gt;创建组件配置表单---&gt;在options.js设置组件默认配置项  
+    ---&gt;在registerCpt.js中注册组件---&gt;在registerOption.js注册配置表单---&gt;使用
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>组件props：</p><table><thead><tr><th>属性名</th><th>说明</th><th>类型</th></tr></thead><tbody><tr><td>option</td><td>自定义组件的属性和数据源</td><td>Object</td></tr><tr><td>height</td><td>组件高度</td><td>Number</td></tr><tr><td>width</td><td>组件宽度</td><td>Number</td></tr><tr><td>show</td><td>组件是否显示</td><td>Boolean</td></tr><tr><td>design</td><td>当前是否为设计模式，false为预览模式</td><td>Boolean</td></tr></tbody></table><p>组件配置表单props：</p><table><thead><tr><th>属性名</th><th>说明</th><th>类型</th></tr></thead><tbody><tr><td>attribute</td><td>自定义组件的自定义属性</td><td>Object</td></tr></tbody></table><p>示例：</p><div class="language-vue line-numbers-mode" data-ext="vue"><pre class="language-vue"><code><span class="token comment">&lt;!--简单组件结构示例--&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    文本：{{option.text}}
+    宽：{{option.width}}
+    高：{{option.height}}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">const</span> props <span class="token operator">=</span> <span class="token function">defineProps</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">width</span><span class="token operator">:</span> Number<span class="token punctuation">,</span>
+  <span class="token literal-property property">height</span><span class="token operator">:</span> Number<span class="token punctuation">,</span>
+  <span class="token literal-property property">option</span><span class="token operator">:</span> Object<span class="token punctuation">,</span>
+  <span class="token literal-property property">show</span><span class="token operator">:</span> Boolean<span class="token punctuation">,</span>
+  <span class="token literal-property property">design</span><span class="token operator">:</span> Boolean<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="动态数据" tabindex="-1"><a class="header-anchor" href="#动态数据" aria-hidden="true">#</a> 动态数据</h2><p>自定义组件若未在option.js中声明cptDataForm，则配置栏不会出现数据配置表单，cptDataForm中配置项如下：</p><table><thead><tr><th>属性名</th><th>说明</th><th>类型</th></tr></thead><tbody><tr><td>dataText</td><td>静态数据</td><td>String</td></tr><tr><td>sql</td><td>默认SQL</td><td>String</td></tr><tr><td>apiUrl</td><td>默认API接口地址</td><td>String</td></tr><tr><td>dataSource</td><td>默认数据源，1:静态数据、2:API接口、3:SQL、4:数据集、5:websocket</td><td>Number</td></tr><tr><td>pollTime</td><td>接口默认轮询时间</td><td>Number</td></tr></tbody></table>`,15),o=[p];function i(l,d){return s(),t("div",null,o)}const r=n(e,[["render",i],["__file","index.html.vue"]]);export{r as default};

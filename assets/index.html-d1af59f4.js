@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-a57f5476","path":"/custom/","title":"开始","lang":"zh-CN","frontmatter":{},"headers":[{"level":2,"title":"动态数据","slug":"动态数据","link":"#动态数据","children":[]}],"git":{"updatedTime":1690111981000,"contributors":[{"name":"chao","email":"vchenghou@aliyun.com","commits":2}]},"filePathRelative":"custom/readme.md"}');export{e as data};
